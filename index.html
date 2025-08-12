@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moida Mansion - Mysterious Online Adventure Game</title>
+    <meta name="description" content="Enter the mysterious Moida Mansion and uncover its dark secrets. Play this thrilling online adventure game featuring puzzles, exploration, and supernatural mysteries.">
+    <meta name="keywords" content="Moida Mansion, online game, adventure game, mystery game, puzzle game, mansion game">
+    <link rel="canonical" href="https://moidamansion.com/">
+    <meta property="og:title" content="Moida Mansion - Mysterious Online Adventure Game">
+    <meta property="og:description" content="Enter the mysterious Moida Mansion and uncover its dark secrets in this thrilling online adventure game.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://moidamansion.com/">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #8b4513;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #b8860b;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #d4af37;
+            margin: 2rem 0 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #8b4513;
+            padding-bottom: 0.5rem;
+        }
+
+        .game-container {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #8b4513;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid #d4af37;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 7px;
+        }
+
+        .game-info {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-card h3 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 2px solid #8b4513;
+        }
+
+        .footer-content {
+            color: #b8860b;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .game-container {
+                padding: 1rem;
+            }
+
+            .iframe-container {
+                height: 400px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .iframe-container {
+                height: 350px;
+            }
+
+            .game-container {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Loading animation for iframe */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: #d4af37;
+            font-size: 1.2rem;
+        }
+
+        /* Atmospheric effects */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23d4af37" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23d4af37" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23d4af37" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+            border-radius: 15px;
+        }
+
+        .hero {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">🏚️ Moida Mansion</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>Moida Mansion</h1>
+                <p class="tagline">Dare to enter the mansion where mysteries lurk in every shadow</p>
+            </section>
+
+            <section class="game-container">
+                <h2>🎮 Play Now</h2>
+                <div class="iframe-container">
+                    <iframe 
+                        src="https://itch.io/embed/2078903/?theme=dark" 
+                        class="game-iframe"
+                        title="Moida Mansion Game"
+                        allowfullscreen>
+                        <div class="loading">Loading Moida Mansion...</div>
+                    </iframe>
+                </div>
+            </section>
+
+            <section class="game-info">
+                <h2>🏰 About Moida Mansion</h2>
+                <p>Step into the <span class="highlight">Moida Mansion</span>, a haunting adventure that will test your courage and wit. This atmospheric online game combines elements of mystery, puzzle-solving, and supernatural exploration in a beautifully crafted mansion setting.</p>
+                
+                <p>As you navigate through the mansion's dimly lit corridors and ornate rooms, you'll uncover a web of secrets that have been hidden for decades. Each room holds clues to the mansion's dark past, and every decision you make will determine your fate.</p>
+
+                <p>The mansion's Victorian architecture and gothic atmosphere create an immersive experience that will keep you on the edge of your seat. With its intricate storyline and challenging puzzles, <span class="highlight">Moida Mansion</span> offers hours of engaging gameplay for mystery enthusiasts and adventure game lovers alike.</p>
+            </section>
+
+            <section>
+                <h2>✨ Game Features</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>🔍 Mystery & Investigation</h3>
+                        <p>Explore every corner of the mansion to uncover hidden clues and solve intricate puzzles that reveal the truth behind the mansion's mysterious past.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🎨 Atmospheric Design</h3>
+                        <p>Immerse yourself in beautifully crafted environments with detailed Victorian architecture and haunting visual effects that bring the mansion to life.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🧩 Challenging Puzzles</h3>
+                        <p>Test your problem-solving skills with a variety of puzzles ranging from logic challenges to hidden object discoveries throughout the mansion.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📱 Cross-Platform Play</h3>
+                        <p>Enjoy seamless gameplay across all devices - whether you're playing on desktop, tablet, or mobile, the mansion awaits your exploration.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="game-info">
+                <h2>🎯 Game Details</h2>
+                <p><strong>Genre:</strong> Mystery Adventure, Puzzle, Supernatural Thriller</p>
+                <p><strong>Platform:</strong> Web Browser (HTML5)</p>
+                <p><strong>Controls:</strong> Mouse/Touch controls for intuitive point-and-click gameplay</p>
+                <p><strong>Difficulty:</strong> Progressive difficulty with hints available for challenging puzzles</p>
+                <p><strong>Estimated Playtime:</strong> 2-4 hours depending on exploration thoroughness</p>
+                <p><strong>Age Rating:</strong> Teen+ (mild supernatural themes and atmospheric tension)</p>
+            </section>
+
+            <section class="game-info">
+                <h2>🏆 Why Play Moida Mansion?</h2>
+                <p>Moida Mansion stands out in the crowded field of online adventure games through its commitment to storytelling excellence and atmospheric immersion. The game successfully blends classic point-and-click adventure mechanics with modern web technology to deliver an experience that feels both nostalgic and contemporary.</p>
+                
+                <p>Whether you're a seasoned adventure game veteran or new to the mystery genre, Moida Mansion offers an accessible yet challenging experience that rewards curiosity and careful observation. The mansion's secrets won't reveal themselves easily - you'll need to think creatively and pay attention to every detail.</p>
+
+                <p>Join thousands of players who have already dared to enter the mansion. Will you be brave enough to uncover all its secrets?</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Moida Mansion. All rights reserved. | Experience the mystery that awaits within.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for better UX
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Add loading state for iframe
+            const iframe = document.querySelector('.game-iframe');
+            iframe.addEventListener('load', function() {
+                console.log('Moida Mansion game loaded successfully');
+            });
+
+            // Add subtle parallax effect to hero section
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.style.transform = `translateY(${scrolled * 0.1}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
