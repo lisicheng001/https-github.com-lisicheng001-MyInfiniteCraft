@@ -3,16 +3,21 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "MyInfiniteCraft - 超级好玩的创造游戏世界",
+  title: "MyInfiniteCraft - Super Fun Creative Game World",
   description:
-    "欢迎来到MyInfiniteCraft - 超级好玩的创造游戏世界！在这里你可以发现、组合、创造无限可能！和无限创造游戏一起开始你的神奇冒险吧！",
-  keywords: "MyInfiniteCraft, 无限创造, 儿童游戏, 创造游戏, 益智游戏, 浏览器游戏, 创意游戏, 发现游戏",
+    "Welcome to MyInfiniteCraft - Super Fun Creative Game World! Discover, combine, and create infinite possibilities! Start your magical adventure with infinite creation games!",
+  keywords:
+    "MyInfiniteCraft, infinite creation, kids games, creative games, puzzle games, browser games, creative games, discovery games",
   openGraph: {
-    title: "MyInfiniteCraft - 超级好玩的创造游戏世界",
-    description: "创造力遇见无限可能 - 发现、组合、创造超越想象的神奇事物！",
+    title: "MyInfiniteCraft - Super Fun Creative Game World",
+    description:
+      "Creativity meets infinite possibilities - discover, combine, create magical things beyond imagination!",
     type: "website",
   },
-    generator: 'v0.dev'
+  verification: {
+    google: "3ETa0kMQ4ZkLKghCCXS2Akgt1ZjLgPKbkbUznrW5zz4",
+  },
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -21,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh-CN">
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#ff6b6b" />
