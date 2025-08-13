@@ -21,7 +21,6 @@ export default function MyInfiniteCraftPage() {
   const [currentView, setCurrentView] = useState<"home" | "infinite-craft">("home")
   const [showGameModal, setShowGameModal] = useState(false)
 
-  // Infinite Craft 游戏状态
   const [elements, setElements] = useState<Element[]>([
     { id: "water", name: "Water", emoji: "💧", discovered: true },
     { id: "fire", name: "Fire", emoji: "🔥", discovered: true },
@@ -180,7 +179,6 @@ export default function MyInfiniteCraftPage() {
   const startInfiniteCraft = () => {
     setCurrentView("infinite-craft")
     setShowGameModal(false)
-    // 开始计时器
     timerRef.current = setInterval(() => {
       setGameStats((prev) => ({
         ...prev,
@@ -191,25 +189,21 @@ export default function MyInfiniteCraftPage() {
 
   const backToHome = () => {
     setCurrentView("home")
-    // 停止计时器
     if (timerRef.current) {
       clearInterval(timerRef.current)
     }
-    // 重置游戏状态
     setWorkspaceElements([])
     setMessage("Drag elements to the workspace to combine them!")
     setSearchTerm("")
     setShowNewDiscovery(null)
   }
 
-  // 格式化时间显示
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
     return `${mins}:${secs.toString().padStart(2, "0")}`
   }
 
-  // 处理拖拽结束
   const handleDragEnd = (result: any) => {
     if (!result.destination) return
 
@@ -228,7 +222,6 @@ export default function MyInfiniteCraftPage() {
     }
   }
 
-  // 尝试组合元素
   const combineElements = () => {
     if (workspaceElements.length !== 2) {
       setMessage("Please place exactly 2 elements in the workspace to combine!")
@@ -297,54 +290,79 @@ export default function MyInfiniteCraftPage() {
     setWorkspaceElements((prev) => prev.filter((_, i) => i !== index))
   }
 
-  // 主页视图
   if (currentView === "home") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-pink-400 via-purple-500 via-blue-500 to-cyan-400 relative overflow-hidden">
+        {/* Super cute background animations */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Elegant light orbs */}
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-400/20 via-teal-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-gradient-to-br from-violet-400/15 via-purple-400/15 to-indigo-400/15 rounded-full blur-3xl animate-pulse delay-500"></div>
+          {/* Rainbow bubbles */}
+          <div className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-br from-pink-300/60 to-red-300/60 rounded-full blur-sm animate-bounce"></div>
+          <div className="absolute top-32 right-20 w-16 h-16 bg-gradient-to-br from-yellow-300/60 to-orange-300/60 rounded-full blur-sm animate-bounce delay-300"></div>
+          <div className="absolute bottom-20 left-32 w-24 h-24 bg-gradient-to-br from-green-300/60 to-emerald-300/60 rounded-full blur-sm animate-bounce delay-700"></div>
+          <div className="absolute bottom-40 right-16 w-18 h-18 bg-gradient-to-br from-blue-300/60 to-cyan-300/60 rounded-full blur-sm animate-bounce delay-1000"></div>
 
-          {/* Subtle floating particles */}
-          <div className="absolute top-20 left-20 w-2 h-2 bg-blue-400/60 rounded-full animate-float"></div>
-          <div className="absolute top-40 right-32 w-1.5 h-1.5 bg-purple-400/60 rounded-full animate-float delay-300"></div>
-          <div className="absolute bottom-32 left-40 w-2 h-2 bg-emerald-400/60 rounded-full animate-float delay-700"></div>
-          <div className="absolute bottom-20 right-20 w-1.5 h-1.5 bg-pink-400/60 rounded-full animate-float delay-1000"></div>
+          {/* Twinkling stars */}
+          <div className="absolute top-20 left-1/4 text-yellow-300 text-2xl animate-ping">⭐</div>
+          <div className="absolute top-1/3 right-1/4 text-pink-300 text-3xl animate-ping delay-500">✨</div>
+          <div className="absolute bottom-1/3 left-1/3 text-purple-300 text-2xl animate-ping delay-1000">🌟</div>
+          <div className="absolute bottom-20 right-1/3 text-cyan-300 text-3xl animate-ping delay-1500">💫</div>
+
+          {/* Floating hearts */}
+          <div className="absolute top-40 left-20 text-red-300 text-xl animate-pulse">💖</div>
+          <div className="absolute top-60 right-40 text-pink-300 text-2xl animate-pulse delay-700">💕</div>
+          <div className="absolute bottom-60 left-40 text-purple-300 text-xl animate-pulse delay-1200">💜</div>
+
+          {/* Rainbow halos */}
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-pink-400/30 via-purple-400/30 via-blue-400/30 to-cyan-400/30 rounded-full blur-3xl animate-spin-slow"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-yellow-400/30 via-orange-400/30 via-red-400/30 to-pink-400/30 rounded-full blur-3xl animate-spin-slow delay-1000"></div>
         </div>
 
-        {/* Elegant grid overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none"></div>
+        {/* Super cute grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
-        <header className="relative z-10 bg-black/20 backdrop-blur-2xl border-b border-white/10 shadow-2xl">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <header className="relative z-10 bg-white/20 backdrop-blur-2xl border-b-4 border-white/30 shadow-2xl">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center">
               <div className="inline-flex items-center space-x-8 mb-8">
+                {/* Super cute Logo */}
                 <div className="relative group">
-                  <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-2xl transform group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                    <div className="text-4xl">⚡</div>
+                  <div className="relative w-28 h-28 bg-gradient-to-br from-pink-400 via-purple-400 via-blue-400 to-cyan-400 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:rotate-12 group-hover:scale-125 transition-all duration-700 animate-pulse">
+                    <div className="text-6xl animate-bounce">🎮</div>
 
-                    {/* Elegant glow effect */}
-                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                    {/* Surrounding little stars */}
+                    <div className="absolute -top-3 -right-3 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center animate-spin">
+                      <span className="text-xs">⭐</span>
+                    </div>
+                    <div className="absolute -bottom-3 -left-3 w-5 h-5 bg-pink-400 rounded-full flex items-center justify-center animate-spin delay-500">
+                      <span className="text-xs">💖</span>
+                    </div>
+                    <div className="absolute top-0 left-0 w-4 h-4 bg-cyan-400 rounded-full flex items-center justify-center animate-spin delay-1000">
+                      <span className="text-xs">✨</span>
+                    </div>
+                    <div className="absolute bottom-0 right-0 w-5 h-5 bg-green-400 rounded-full flex items-center justify-center animate-spin delay-1500">
+                      <span className="text-xs">🌟</span>
+                    </div>
 
-                    {/* Subtle corner accents */}
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-white/40 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                    <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-white/30 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100"></div>
+                    {/* Rainbow halo */}
+                    <div className="absolute -inset-4 bg-gradient-to-r from-pink-400/40 via-purple-400/40 via-blue-400/40 to-cyan-400/40 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"></div>
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                  <h1 className="text-6xl md:text-8xl font-black bg-gradient-to-r from-pink-300 via-purple-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent animate-pulse">
                     MyInfiniteCraft
                   </h1>
-                  <div className="text-lg text-white/60 mt-2 font-medium">Create • Discover • Explore</div>
+                  <div className="text-2xl text-white font-black mt-4 animate-bounce">
+                    🌈 The Ultimate Gaming World! ✨
+                  </div>
                 </div>
               </div>
-              <p className="text-xl md:text-2xl text-white/80 font-medium max-w-4xl mx-auto leading-relaxed">
-                Welcome to the ultimate creative playground where imagination meets infinite possibilities.
+              <p className="text-2xl md:text-3xl text-white font-black max-w-4xl mx-auto leading-relaxed animate-pulse">
+                🎉 Welcome to the most amazing and adorable gaming paradise! 🎮
                 <br />
-                <span className="text-blue-200">Click on a game to begin your journey.</span>
+                <span className="text-yellow-200 text-3xl">
+                  🚀 Click the game icon to start your super adventure! 🌟
+                </span>
               </p>
             </div>
           </div>
@@ -353,70 +371,77 @@ export default function MyInfiniteCraftPage() {
         <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <section className="mb-20">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent mb-6">
-                🎮 Amazing Games 🌟
+              <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-pink-300 via-purple-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent mb-8 animate-bounce">
+                🎮 Super Fun Games! 🌟
               </h2>
-              <p className="text-xl text-white/80 font-medium max-w-3xl mx-auto">
-                🚀 Discover magical worlds of creativity and endless fun combinations! ✨
+              <p className="text-3xl text-white font-black max-w-3xl mx-auto animate-pulse">
+                🚀 Come discover the magical world of creation, infinite fun awaits you! ✨
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              {/* Infinite Craft game card */}
               <div
-                className="group relative cursor-pointer transform transition-all duration-500 hover:scale-110 hover:rotate-1"
+                className="group relative cursor-pointer transform transition-all duration-700 hover:scale-125 hover:rotate-3 animate-pulse"
                 onClick={handleInfiniteCraftClick}
               >
-                <div className="absolute -inset-6 bg-gradient-to-r from-pink-500/30 via-purple-500/30 via-blue-500/30 to-cyan-500/30 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"></div>
+                {/* Super cool outer halo */}
+                <div className="absolute -inset-8 bg-gradient-to-r from-pink-400/50 via-purple-400/50 via-blue-400/50 to-cyan-400/50 rounded-3xl blur-3xl opacity-100 group-hover:opacity-100 transition-all duration-700 animate-pulse"></div>
 
                 {/* Main card */}
-                <div className="relative bg-gradient-to-br from-white/15 to-white/10 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/30 shadow-2xl overflow-hidden">
+                <div className="relative bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-xl rounded-3xl p-10 border-4 border-white/50 shadow-2xl overflow-hidden">
+                  {/* Status label */}
                   <div className="absolute top-6 right-6 z-10">
-                    <div className="bg-gradient-to-r from-green-400 to-emerald-400 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center space-x-2 animate-bounce">
-                      <div className="w-3 h-3 bg-white rounded-full animate-ping"></div>
+                    <div className="bg-gradient-to-r from-green-400 to-emerald-400 text-white px-6 py-3 rounded-full text-lg font-black shadow-lg flex items-center space-x-3 animate-bounce">
+                      <div className="w-4 h-4 bg-white rounded-full animate-ping"></div>
                       <span>🎯 Ready to Play!</span>
                     </div>
                   </div>
 
-                  <div className="relative text-center mb-8">
+                  {/* Game icon */}
+                  <div className="relative text-center mb-10">
                     <div className="relative inline-block">
-                      <div className="relative w-28 h-28 bg-gradient-to-br from-pink-500 via-purple-500 via-blue-500 to-cyan-500 rounded-3xl flex items-center justify-center shadow-2xl group-hover:rotate-12 group-hover:scale-125 transition-all duration-700">
-                        <div className="text-6xl animate-pulse">⚡</div>
+                      <div className="relative w-36 h-36 bg-gradient-to-br from-pink-400 via-purple-400 via-blue-400 to-cyan-400 rounded-3xl flex items-center justify-center shadow-2xl group-hover:rotate-12 group-hover:scale-125 transition-all duration-700 animate-pulse">
+                        <div className="text-8xl animate-bounce">⚡</div>
 
-                        <div className="absolute -top-3 -right-3 w-6 h-6 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
-                        <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-200"></div>
-                        <div className="absolute top-0 left-0 w-5 h-5 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-400"></div>
-                        <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-600"></div>
+                        {/* Surrounding particles */}
+                        <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                        <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-200"></div>
+                        <div className="absolute top-0 left-0 w-7 h-7 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-400"></div>
+                        <div className="absolute bottom-0 right-0 w-5 h-5 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-600"></div>
+                        <div className="absolute top-1/2 left-0 w-4 h-4 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-800"></div>
+                        <div className="absolute top-1/2 right-0 w-6 h-6 bg-orange-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-1000"></div>
                       </div>
                     </div>
                   </div>
 
                   {/* Game information */}
                   <div className="relative z-10 text-center">
-                    <h3 className="text-3xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+                    <h3 className="text-4xl font-black bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent mb-6 animate-bounce">
                       ⚡ Infinite Craft ✨
                     </h3>
-                    <p className="text-white/80 mb-8 leading-relaxed text-lg font-medium">
-                      🧪 Mix and match elements to create amazing new things! From simple water and fire to magical
-                      creatures and cool inventions! 🌟
+                    <p className="text-gray-700 mb-10 leading-relaxed text-xl font-black">
+                      🧪 Mix different elements together to create super cool new things! From simple water and fire to
+                      magical creatures and awesome inventions! 🌟
                     </p>
 
-                    <div className="space-y-3 text-sm mb-8">
-                      <div className="flex justify-between items-center bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-xl px-4 py-3 border-2 border-pink-400/40">
-                        <span className="text-white font-bold">🎨 Type:</span>
-                        <span className="text-pink-200 font-bold">Creative & Fun!</span>
+                    <div className="space-y-4 text-lg mb-10">
+                      <div className="flex justify-between items-center bg-gradient-to-r from-pink-100 to-purple-100 rounded-2xl px-6 py-4 border-4 border-pink-300/60">
+                        <span className="text-gray-800 font-black">🎨 Type:</span>
+                        <span className="text-pink-600 font-black">Creative Fun!</span>
                       </div>
-                      <div className="flex justify-between items-center bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-xl px-4 py-3 border-2 border-blue-400/40">
-                        <span className="text-white font-bold">👥 Players:</span>
-                        <span className="text-cyan-200 font-bold">Just You!</span>
+                      <div className="flex justify-between items-center bg-gradient-to-r from-blue-100 to-cyan-100 rounded-2xl px-6 py-4 border-4 border-blue-300/60">
+                        <span className="text-gray-800 font-black">👥 Players:</span>
+                        <span className="text-cyan-600 font-black">Just You!</span>
                       </div>
-                      <div className="flex justify-between items-center bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-xl px-4 py-3 border-2 border-green-400/40">
-                        <span className="text-white font-bold">⭐ Fun Level:</span>
-                        <span className="text-green-200 font-bold">Super Easy!</span>
+                      <div className="flex justify-between items-center bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl px-6 py-4 border-4 border-green-300/60">
+                        <span className="text-gray-800 font-black">⭐ Difficulty:</span>
+                        <span className="text-green-600 font-black">Super Easy!</span>
                       </div>
                     </div>
 
-                    <button className="w-full bg-gradient-to-r from-pink-500 via-purple-500 via-blue-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:via-blue-600 hover:to-cyan-600 text-white font-black py-5 px-8 rounded-2xl transition-all duration-300 transform group-hover:scale-110 shadow-2xl text-lg animate-pulse">
-                      <span className="flex items-center justify-center space-x-3">
+                    <button className="w-full bg-gradient-to-r from-pink-500 via-purple-500 via-blue-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:via-blue-600 hover:to-cyan-600 text-white font-black py-6 px-10 rounded-3xl transition-all duration-300 transform group-hover:scale-110 shadow-2xl text-2xl animate-pulse">
+                      <span className="flex items-center justify-center space-x-4">
                         <span>🚀 Start Playing Now! 🎮</span>
                       </span>
                     </button>
@@ -424,66 +449,68 @@ export default function MyInfiniteCraftPage() {
                 </div>
               </div>
 
-              <div className="group relative transform transition-all duration-300 hover:scale-105 hover:rotate-1 opacity-70">
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/20 shadow-xl">
+              {/* Coming Soon Game 1 */}
+              <div className="group relative transform transition-all duration-500 hover:scale-110 hover:rotate-2 opacity-80">
+                <div className="relative bg-gradient-to-br from-white/80 to-white/70 backdrop-blur-xl rounded-3xl p-10 border-4 border-white/40 shadow-xl">
                   <div className="absolute top-6 right-6">
-                    <div className="bg-gradient-to-r from-orange-400 to-red-400 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center space-x-2 animate-bounce">
-                      <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                    <div className="bg-gradient-to-r from-orange-400 to-red-400 text-white px-6 py-3 rounded-full text-lg font-black shadow-lg flex items-center space-x-3 animate-bounce">
+                      <div className="w-4 h-4 bg-white rounded-full animate-pulse"></div>
                       <span>🔜 Coming Soon!</span>
                     </div>
                   </div>
 
                   <div className="text-center">
-                    <div className="relative inline-block mb-8">
-                      <div className="w-24 h-24 bg-gradient-to-br from-orange-400/30 to-red-400/30 rounded-3xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-all duration-500">
-                        <span className="text-5xl animate-bounce">🎲</span>
+                    <div className="relative inline-block mb-10">
+                      <div className="w-32 h-32 bg-gradient-to-br from-orange-300/60 to-red-300/60 rounded-3xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-all duration-500">
+                        <span className="text-7xl animate-bounce">🎲</span>
                       </div>
                     </div>
 
-                    <h3 className="text-2xl font-black bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-4">
+                    <h3 className="text-3xl font-black bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent mb-6">
                       🎲 Mystery Adventure
                     </h3>
-                    <p className="text-white/60 mb-8 leading-relaxed font-medium">
-                      🌟 A super cool new game is coming soon! Get ready for more fun! ✨
+                    <p className="text-gray-600 mb-10 leading-relaxed text-xl font-black">
+                      🌟 A super cool new game is on the way! Get ready for more fun! ✨
                     </p>
 
-                    <div className="space-y-3 text-sm">
-                      <div className="flex justify-between items-center bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-xl px-4 py-3 border-2 border-orange-400/40">
-                        <span className="text-white/70 font-bold">📅 Status:</span>
-                        <span className="text-orange-300 font-bold">Almost Ready!</span>
+                    <div className="space-y-4 text-lg">
+                      <div className="flex justify-between items-center bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl px-6 py-4 border-4 border-orange-300/60">
+                        <span className="text-gray-700 font-black">📅 Status:</span>
+                        <span className="text-orange-600 font-black">Almost Ready!</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="group relative transform transition-all duration-300 hover:scale-105 hover:rotate-1 opacity-70">
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/20 shadow-xl">
+              {/* Coming Soon Game 2 */}
+              <div className="group relative transform transition-all duration-500 hover:scale-110 hover:rotate-2 opacity-80">
+                <div className="relative bg-gradient-to-br from-white/80 to-white/70 backdrop-blur-xl rounded-3xl p-10 border-4 border-white/40 shadow-xl">
                   <div className="absolute top-6 right-6">
-                    <div className="bg-gradient-to-r from-orange-400 to-red-400 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center space-x-2 animate-bounce">
-                      <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                    <div className="bg-gradient-to-r from-orange-400 to-red-400 text-white px-6 py-3 rounded-full text-lg font-black shadow-lg flex items-center space-x-3 animate-bounce">
+                      <div className="w-4 h-4 bg-white rounded-full animate-pulse"></div>
                       <span>🔜 Coming Soon!</span>
                     </div>
                   </div>
 
                   <div className="text-center">
-                    <div className="relative inline-block mb-8">
-                      <div className="w-24 h-24 bg-gradient-to-br from-teal-400/30 to-cyan-400/30 rounded-3xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-all duration-500">
-                        <span className="text-5xl animate-bounce delay-200">🎯</span>
+                    <div className="relative inline-block mb-10">
+                      <div className="w-32 h-32 bg-gradient-to-br from-teal-300/60 to-cyan-300/60 rounded-3xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-all duration-500">
+                        <span className="text-7xl animate-bounce delay-200">🎯</span>
                       </div>
                     </div>
 
-                    <h3 className="text-2xl font-black bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent mb-4">
-                      🎯 Secret Quest
+                    <h3 className="text-3xl font-black bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent mb-6">
+                      🎯 Secret Mission
                     </h3>
-                    <p className="text-white/60 mb-8 leading-relaxed font-medium">
-                      🚀 Another amazing adventure is being built just for you! 🌈
+                    <p className="text-gray-600 mb-10 leading-relaxed text-xl font-black">
+                      🚀 Another awesome adventure is being prepared for you! 🌈
                     </p>
 
-                    <div className="space-y-3 text-sm">
-                      <div className="flex justify-between items-center bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-xl px-4 py-3 border-2 border-teal-400/40">
-                        <span className="text-white/70 font-bold">📅 Status:</span>
-                        <span className="text-teal-300 font-bold">Almost Ready!</span>
+                    <div className="space-y-4 text-lg">
+                      <div className="flex justify-between items-center bg-gradient-to-r from-teal-100 to-cyan-100 rounded-2xl px-6 py-4 border-4 border-teal-300/60">
+                        <span className="text-gray-700 font-black">📅 Status:</span>
+                        <span className="text-teal-600 font-black">Almost Ready!</span>
                       </div>
                     </div>
                   </div>
@@ -492,34 +519,41 @@ export default function MyInfiniteCraftPage() {
             </div>
           </section>
 
+          {/* Statistics section */}
           <div className="text-center">
-            <div className="relative bg-gradient-to-br from-white/15 to-white/10 backdrop-blur-2xl rounded-3xl p-12 border-2 border-white/30 shadow-2xl">
-              <h2 className="relative text-4xl font-black bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 bg-clip-text text-transparent mb-12">
-                🏆 Fun Stats & Numbers! 📊
+            <div className="relative bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-2xl rounded-3xl p-16 border-4 border-white/50 shadow-2xl">
+              <h2 className="relative text-5xl font-black bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 bg-clip-text text-transparent mb-16 animate-bounce">
+                🏆 Awesome Statistics! 📊
               </h2>
 
-              <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div className="group">
-                  <div className="bg-gradient-to-br from-green-400/30 to-emerald-400/30 rounded-3xl p-8 border-2 border-green-400/50 group-hover:scale-110 transition-all duration-500 shadow-2xl">
-                    <div className="text-6xl font-black text-green-300 mb-4 animate-bounce">1</div>
-                    <div className="text-white font-black text-xl mb-2">🎮 Ready Games</div>
-                    <div className="text-green-200 text-lg font-bold">Let's Play!</div>
+                  <div className="bg-gradient-to-br from-green-300/60 to-emerald-300/60 rounded-3xl p-10 border-4 border-green-400/70 group-hover:scale-125 transition-all duration-700 shadow-2xl">
+                    <div className="text-8xl font-black text-green-600 mb-6 animate-bounce">1</div>
+                    <div className="text-white font-black text-2xl mb-4 bg-green-500 rounded-2xl py-2">
+                      🎮 Ready Games
+                    </div>
+                    <div className="text-green-700 text-xl font-black">Come and play!</div>
                   </div>
                 </div>
 
                 <div className="group">
-                  <div className="bg-gradient-to-br from-orange-400/30 to-red-400/30 rounded-3xl p-8 border-2 border-orange-400/50 group-hover:scale-110 transition-all duration-500 shadow-2xl">
-                    <div className="text-6xl font-black text-orange-300 mb-4 animate-bounce delay-200">2</div>
-                    <div className="text-white font-black text-xl mb-2">🔜 Coming Soon</div>
-                    <div className="text-orange-200 text-lg font-bold">Almost Here!</div>
+                  <div className="bg-gradient-to-br from-orange-300/60 to-red-300/60 rounded-3xl p-10 border-4 border-orange-400/70 group-hover:scale-125 transition-all duration-700 shadow-2xl">
+                    <div className="text-8xl font-black text-orange-600 mb-6 animate-bounce delay-200">2</div>
+                    <div className="text-white font-black text-2xl mb-4 bg-orange-500 rounded-2xl py-2">
+                      🔜 Coming Soon
+                    </div>
+                    <div className="text-orange-700 text-xl font-black">Almost here!</div>
                   </div>
                 </div>
 
                 <div className="group">
-                  <div className="bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-3xl p-8 border-2 border-purple-400/50 group-hover:scale-110 transition-all duration-500 shadow-2xl">
-                    <div className="text-6xl font-black text-purple-300 mb-4 animate-pulse">∞</div>
-                    <div className="text-white font-black text-xl mb-2">✨ Fun Ideas</div>
-                    <div className="text-purple-200 text-lg font-bold">Never Ending!</div>
+                  <div className="bg-gradient-to-br from-purple-300/60 to-pink-300/60 rounded-3xl p-10 border-4 border-purple-400/70 group-hover:scale-125 transition-all duration-700 shadow-2xl">
+                    <div className="text-8xl font-black text-purple-600 mb-6 animate-pulse">∞</div>
+                    <div className="text-white font-black text-2xl mb-4 bg-purple-500 rounded-2xl py-2">
+                      ✨ Fun Ideas
+                    </div>
+                    <div className="text-purple-700 text-xl font-black">Never ending!</div>
                   </div>
                 </div>
               </div>
@@ -527,39 +561,40 @@ export default function MyInfiniteCraftPage() {
           </div>
         </main>
 
-        <footer className="relative z-10 bg-black/30 backdrop-blur-2xl border-t-2 border-white/20 mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Super cute footer */}
+        <footer className="relative z-10 bg-white/30 backdrop-blur-2xl border-t-4 border-white/40 mt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             {/* Main footer content */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-              {/* Brand section */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
+              {/* Brand area */}
               <div className="md:col-span-2">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-xl">
-                    <span className="text-3xl">⚡</span>
+                <div className="flex items-center space-x-6 mb-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-pink-400 via-purple-400 to-cyan-400 rounded-3xl flex items-center justify-center shadow-xl animate-pulse">
+                    <span className="text-4xl animate-bounce">🎮</span>
                   </div>
                   <div>
-                    <h3 className="text-3xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                    <h3 className="text-4xl font-black bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
                       MyInfiniteCraft
                     </h3>
-                    <p className="text-white/70 font-medium">🌟 Where Fun Never Ends! ✨</p>
+                    <p className="text-white font-black text-xl">🌟 The fun never ends! ✨</p>
                   </div>
                 </div>
-                <p className="text-white/80 text-lg leading-relaxed max-w-md">
-                  🎮 The most amazing place for kids to play, create, and discover endless fun! Join millions of young
-                  creators in magical adventures! 🚀
+                <p className="text-white text-xl leading-relaxed max-w-md font-black">
+                  🎮 This is the best gaming paradise for kids! Join little creators from around the world and start
+                  your magical adventure! 🚀
                 </p>
               </div>
 
-              {/* Quick Links */}
+              {/* Quick links */}
               <div>
-                <h4 className="text-xl font-black text-white mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                <h4 className="text-2xl font-black text-white mb-8 bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
                   🔗 Quick Links
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   <li>
                     <a
                       href="#games"
-                      className="text-white/70 hover:text-white font-medium transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black text-lg transition-colors duration-300 hover:underline"
                     >
                       🎮 Games
                     </a>
@@ -567,7 +602,7 @@ export default function MyInfiniteCraftPage() {
                   <li>
                     <a
                       href="#about"
-                      className="text-white/70 hover:text-white font-medium transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black text-lg transition-colors duration-300 hover:underline"
                     >
                       ℹ️ About Us
                     </a>
@@ -575,7 +610,7 @@ export default function MyInfiniteCraftPage() {
                   <li>
                     <a
                       href="#help"
-                      className="text-white/70 hover:text-white font-medium transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black text-lg transition-colors duration-300 hover:underline"
                     >
                       ❓ Help Center
                     </a>
@@ -583,7 +618,7 @@ export default function MyInfiniteCraftPage() {
                   <li>
                     <a
                       href="#news"
-                      className="text-white/70 hover:text-white font-medium transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black text-lg transition-colors duration-300 hover:underline"
                     >
                       📰 News
                     </a>
@@ -591,16 +626,16 @@ export default function MyInfiniteCraftPage() {
                 </ul>
               </div>
 
-              {/* Contact & Support */}
+              {/* Contact us */}
               <div>
-                <h4 className="text-xl font-black text-white mb-6 bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                <h4 className="text-2xl font-black text-white mb-8 bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">
                   📞 Contact Us
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   <li>
                     <a
                       href="mailto:hello@myinfinitecraft.com"
-                      className="text-white/70 hover:text-white font-medium transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black text-lg transition-colors duration-300 hover:underline"
                     >
                       📧 hello@myinfinitecraft.com
                     </a>
@@ -608,7 +643,7 @@ export default function MyInfiniteCraftPage() {
                   <li>
                     <a
                       href="#support"
-                      className="text-white/70 hover:text-white font-medium transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black text-lg transition-colors duration-300 hover:underline"
                     >
                       🛟 Support Center
                     </a>
@@ -616,7 +651,7 @@ export default function MyInfiniteCraftPage() {
                   <li>
                     <a
                       href="#feedback"
-                      className="text-white/70 hover:text-white font-medium transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black text-lg transition-colors duration-300 hover:underline"
                     >
                       💬 Send Feedback
                     </a>
@@ -624,7 +659,7 @@ export default function MyInfiniteCraftPage() {
                   <li>
                     <a
                       href="#parents"
-                      className="text-white/70 hover:text-white font-medium transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black text-lg transition-colors duration-300 hover:underline"
                     >
                       👨‍👩‍👧‍👦 For Parents
                     </a>
@@ -633,44 +668,44 @@ export default function MyInfiniteCraftPage() {
               </div>
             </div>
 
-            {/* Safety & Legal section */}
-            <div className="border-t border-white/20 pt-8 mb-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Safety and legal information */}
+            <div className="border-t-4 border-white/40 pt-12 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
-                  <h4 className="text-lg font-black text-white mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                  <h4 className="text-2xl font-black text-white mb-6 bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
                     🛡️ Safety First!
                   </h4>
-                  <p className="text-white/70 text-sm leading-relaxed">
-                    MyInfiniteCraft is designed to be 100% safe for kids. We don't collect personal information and all
-                    content is family-friendly. Parents can play along too! 👨‍👩‍👧‍👦
+                  <p className="text-white/90 text-lg leading-relaxed font-black">
+                    MyInfiniteCraft is designed specifically for kids, 100% safe! We don't collect personal information,
+                    all content is suitable for the whole family to play together! Parents can join too! 👨‍👩‍👧‍👦
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-lg font-black text-white mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                  <h4 className="text-2xl font-black text-white mb-6 bg-gradient-to-r from-pink-300 to-purple-300 bg-clip-text text-transparent">
                     📜 Important Links
                   </h4>
-                  <div className="flex flex-wrap gap-4 text-sm">
+                  <div className="flex flex-wrap gap-6 text-lg">
                     <a
                       href="#privacy"
-                      className="text-white/70 hover:text-white transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black transition-colors duration-300 hover:underline"
                     >
                       🔒 Privacy Policy
                     </a>
                     <a
                       href="#terms"
-                      className="text-white/70 hover:text-white transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black transition-colors duration-300 hover:underline"
                     >
-                      📋 Terms of Use
+                      📋 Terms of Service
                     </a>
                     <a
                       href="#cookies"
-                      className="text-white/70 hover:text-white transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black transition-colors duration-300 hover:underline"
                     >
                       🍪 Cookie Policy
                     </a>
                     <a
                       href="#safety"
-                      className="text-white/70 hover:text-white transition-colors duration-300 hover:underline"
+                      className="text-white/90 hover:text-white font-black transition-colors duration-300 hover:underline"
                     >
                       🛡️ Safety Guidelines
                     </a>
@@ -679,26 +714,57 @@ export default function MyInfiniteCraftPage() {
               </div>
             </div>
 
-            {/* Copyright and final info */}
-            <div className="border-t border-white/20 pt-8 text-center">
-              <div className="mb-6">
-                <p className="text-2xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+            {/* Copyright and final information */}
+            <div className="border-t-4 border-white/40 pt-12 text-center">
+              <div className="mb-8">
+                <p className="text-3xl font-black bg-gradient-to-r from-pink-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent mb-4 animate-pulse">
                   © 2025 MyInfiniteCraft - All Rights Reserved ✨
                 </p>
-                <p className="text-white/70 text-lg font-medium max-w-3xl mx-auto">
-                  🌟 Made with lots of love for amazing kids everywhere! Keep creating, keep dreaming, keep playing! 🚀
+                <p className="text-white text-2xl font-black max-w-4xl mx-auto animate-bounce">
+                  🌟 Made with love for amazing kids around the world! Keep creating, keep dreaming, keep playing! 🚀
                 </p>
               </div>
 
-              <div className="flex justify-center space-x-8 text-sm text-white/60">
-                <span>🌍 Available Worldwide</span>
-                <span>🎮 100% Free to Play</span>
+              <div className="flex justify-center space-x-12 text-lg text-white/80 font-black">
+                <span>🌍 Play Worldwide</span>
+                <span>🎮 100% Free</span>
                 <span>👨‍👩‍👧‍👦 Family Friendly</span>
                 <span>🛡️ Safe & Secure</span>
               </div>
             </div>
           </div>
         </footer>
+
+        {/* Game launch modal */}
+        {showGameModal && (
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-xl rounded-3xl p-12 max-w-md w-full border-4 border-white/50 shadow-2xl animate-bounce">
+              <div className="text-center">
+                <div className="text-8xl mb-8 animate-spin">⚡</div>
+                <h3 className="text-3xl font-black bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent mb-6">
+                  🚀 Ready to Start Adventure!
+                </h3>
+                <p className="text-gray-700 mb-10 text-xl font-black leading-relaxed">
+                  Are you sure you want to start playing Infinite Craft? Ready to create super cool things? ✨
+                </p>
+                <div className="flex space-x-4">
+                  <button
+                    onClick={startInfiniteCraft}
+                    className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-black py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg text-xl"
+                  >
+                    🎮 Start Playing!
+                  </button>
+                  <button
+                    onClick={() => setShowGameModal(false)}
+                    className="flex-1 bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white font-black py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-110 shadow-lg text-xl"
+                  >
+                    🔙 Go Back
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     )
   }
@@ -707,7 +773,7 @@ export default function MyInfiniteCraftPage() {
   return (
     <div className="h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden">
       <DragDropContext onDragEnd={handleDragEnd}>
-        {/* 游戏头部 */}
+        {/* Game header */}
         <div className="bg-white/80 backdrop-blur-xl border-b border-gray-200/50 p-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
@@ -737,7 +803,7 @@ export default function MyInfiniteCraftPage() {
           </div>
         </div>
 
-        {/* 游戏状态消息 */}
+        {/* Game status message */}
         <div className="p-4">
           <div className="bg-gradient-to-r from-white/60 to-white/40 backdrop-blur-sm rounded-2xl p-4 border border-gray-200/50 shadow-lg">
             <p className="text-lg font-bold text-gray-800 text-center">{message}</p>
@@ -753,7 +819,7 @@ export default function MyInfiniteCraftPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4 h-full">
-          {/* 工作区 */}
+          {/* Workspace */}
           <div className="lg:col-span-1">
             <div className="bg-gradient-to-br from-white/60 to-white/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-lg h-full">
               <h2 className="text-2xl font-black text-gray-800 mb-4 text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
@@ -829,7 +895,7 @@ export default function MyInfiniteCraftPage() {
             </div>
           </div>
 
-          {/* 元素库 */}
+          {/* Elements library */}
           <div className="lg:col-span-2">
             <div className="bg-gradient-to-br from-white/60 to-white/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-lg h-full">
               <div className="flex justify-between items-center mb-6">
