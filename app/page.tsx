@@ -599,6 +599,124 @@ export default function MyInfiniteCraftPage() {
                 </div>
               </div>
             </div>
+
+            <section className="mt-20">
+              <div className="relative bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-2xl rounded-3xl p-16 border-4 border-white/50 shadow-2xl">
+                <h2 className="text-5xl font-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-16 text-center animate-bounce">
+                  💬 Player Reviews! 🌟
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {/* Comment 1 */}
+                  <div className="group bg-gradient-to-br from-pink-100/80 to-purple-100/80 rounded-3xl p-8 border-4 border-pink-300/60 shadow-xl hover:scale-105 transition-all duration-500">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-purple-400 rounded-full flex items-center justify-center text-2xl animate-bounce">
+                        😊
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-black text-gray-800">小明</h4>
+                        <div className="flex text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 text-lg font-bold leading-relaxed">
+                      "这就是原版！太好玩了，我已经创造了好多新元素！🎉"
+                    </p>
+                    <div className="mt-4 text-sm text-gray-500 font-medium">2 hours ago</div>
+                  </div>
+
+                  {/* Comment 2 */}
+                  <div className="group bg-gradient-to-br from-blue-100/80 to-cyan-100/80 rounded-3xl p-8 border-4 border-blue-300/60 shadow-xl hover:scale-105 transition-all duration-500">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center text-2xl animate-bounce delay-200">
+                        🤩
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-black text-gray-800">Emma</h4>
+                        <div className="flex text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 text-lg font-bold leading-relaxed">
+                      "Amazing! This is exactly like the original version! My kids love it! 🌈✨"
+                    </p>
+                    <div className="mt-4 text-sm text-gray-500 font-medium">5 hours ago</div>
+                  </div>
+
+                  {/* Comment 3 */}
+                  <div className="group bg-gradient-to-br from-green-100/80 to-emerald-100/80 rounded-3xl p-8 border-4 border-green-300/60 shadow-xl hover:scale-105 transition-all duration-500">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full flex items-center justify-center text-2xl animate-bounce delay-500">
+                        🥳
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-black text-gray-800">Alex</h4>
+                        <div className="flex text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 text-lg font-bold leading-relaxed">
+                      "Perfect recreation! This is the original experience we all remember! 🎮🔥"
+                    </p>
+                    <div className="mt-4 text-sm text-gray-500 font-medium">1 day ago</div>
+                  </div>
+
+                  {/* Comment 4 */}
+                  <div className="group bg-gradient-to-br from-yellow-100/80 to-orange-100/80 rounded-3xl p-8 border-4 border-yellow-300/60 shadow-xl hover:scale-105 transition-all duration-500">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center text-2xl animate-bounce delay-700">
+                        😍
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-black text-gray-800">小红</h4>
+                        <div className="flex text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 text-lg font-bold leading-relaxed">
+                      "哇！这就是原版的感觉！界面超级可爱，孩子们玩得停不下来！💖"
+                    </p>
+                    <div className="mt-4 text-sm text-gray-500 font-medium">2 days ago</div>
+                  </div>
+
+                  {/* Comment 5 */}
+                  <div className="group bg-gradient-to-br from-purple-100/80 to-pink-100/80 rounded-3xl p-8 border-4 border-purple-300/60 shadow-xl hover:scale-105 transition-all duration-500">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-2xl animate-bounce delay-1000">
+                        🤗
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-black text-gray-800">Sarah</h4>
+                        <div className="flex text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 text-lg font-bold leading-relaxed">
+                      "This is the original! So nostalgic and fun! The animations are adorable! 🌟"
+                    </p>
+                    <div className="mt-4 text-sm text-gray-500 font-medium">3 days ago</div>
+                  </div>
+
+                  {/* Comment 6 */}
+                  <div className="group bg-gradient-to-br from-teal-100/80 to-cyan-100/80 rounded-3xl p-8 border-4 border-teal-300/60 shadow-xl hover:scale-105 transition-all duration-500">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-400 rounded-full flex items-center justify-center text-2xl animate-bounce delay-1200">
+                        🎉
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-black text-gray-800">David</h4>
+                        <div className="flex text-yellow-400 text-lg">⭐⭐⭐⭐⭐</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 text-lg font-bold leading-relaxed">
+                      "Exactly what I was looking for! This is the original version with all the magic! ⚡🎮"
+                    </p>
+                    <div className="mt-4 text-sm text-gray-500 font-medium">1 week ago</div>
+                  </div>
+                </div>
+
+                <div className="text-center mt-12">
+                  <button className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 hover:from-pink-600 hover:via-purple-600 hover:to-cyan-600 text-white font-black py-4 px-8 rounded-3xl transition-all duration-300 transform hover:scale-110 shadow-2xl text-xl animate-pulse">
+                    💬 Leave Your Review! ✨
+                  </button>
+                </div>
+              </div>
+            </section>
           </main>
 
           {/* Super cute footer */}
